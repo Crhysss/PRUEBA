@@ -9,6 +9,7 @@ float obtener_promedio_progreso(float calificaciones[][PROGRESOS], int progreso)
 int obtener_alumno_mayor_promedio(float promedios_alumnos[]);
 
 int main() {
+    //definicion de los valores de cada estudiantes divididos en progresos
     float calificaciones[ALUMNOS][PROGRESOS] = {
         {1, 10, 8,9}, {2, 9.7, 7.5,8}, {3, 8.5, 9,4}, {4, 10, 9,6}, {5, 7.8, 7.5,5}, {6, 8.9, 9,10}, {7, 4, 5,6}, {8, 4.8, 6,9},
         {9, 3.7, 4.5,7.9}, {10, 10, 9.8,6.9}, {11, 8.7, 9,10}, {12, 5.8, 6,1.3}, {13, 9.7, 10,5.8}, {14, 7.9, 8.5,5.8}, {15, 5.9, 7,9},
@@ -46,17 +47,21 @@ int main() {
 }
 
 void obtener_promedio_alumnos(float calificaciones[][PROGRESOS], float promedios_alumnos[]) {
+    int promedio;
     for (int i = 0; i < ALUMNOS; i++) {
         float suma = 0.0;
         for (int j = 0; j < PROGRESOS; j++) {
             suma += calificaciones[i][j];
         }
+        //en teoria esta parte divide la suma para la candidad de progresos
         promedios_alumnos[i] = suma / PROGRESOS;
+        promedio=promedios_alumnos[i]/3;
     }
 }
 
 float obtener_promedio_progreso(float calificaciones[][PROGRESOS], int progreso) {
     float suma = 0.0;
+    //nota promedio de cada estudiante por progreso
     for (int i = 0; i < ALUMNOS; i++) {
         suma += calificaciones[i][progreso];
     }
@@ -64,6 +69,7 @@ float obtener_promedio_progreso(float calificaciones[][PROGRESOS], int progreso)
 }
 
 int obtener_alumno_mayor_promedio(float promedios_alumnos[]) {
+    //se realiza una comparacion entre los alumnos con mayor nota
     float mayor_promedio = promedios_alumnos[0];
     int indice_alumno_mayor_promedio = 0;
     for (int i = 1; i < ALUMNOS; i++) {
